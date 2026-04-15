@@ -69,16 +69,45 @@ function trackShipment() {
         return;
     }
     
-    // Look up shipment
-    const shipment = shipmentDatabase[trackingNumber];
+    // Show loading state
+    const statusElement = document.getElementById("shipmentStatus");
+    statusElement.textContent = "🔄 Tracking...";
+    resultDiv.classList.remove("hidden");
     
-    if (!shipment) {
-        showError("Tracking number not found. Please check and try again. (Demo: KETECH-CN-12345, KETECH-CN-54321, KETECH-CN-99999)");
-        return;
-    }
-    
-    // Display shipment information
-    displayShipment(shipment);
+    // Call backend API to get real tracking data
+    fetch(`api/track.php?tracking=${encodeURIComponent(trackingNumber)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('API request failed');
+            }
+            return response.json();
+        })
+        .then(shipment => {
+            if (shipment.success) {
+                displayShipment(shipment);
+            } else {
+                // Fallback to mock data
+                console.log('Using fallback mock data');
+                const mockShipment = shipmentDatabase[trackingNumber];
+                if (mockShipment) {
+                    displayShipment(mockShipment);
+                } else {
+                    showError("Tracking number not found. Please check and try again. (Demo: KETECH-CN-12345, KETECH-CN-54321, KETECH-CN-99999)");
+                    resultDiv.classList.add("hidden");
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Tracking error:', error);
+            // Fallback to mock database
+            const mockShipment = shipmentDatabase[trackingNumber];
+            if (mockShipment) {
+                displayShipment(mockShipment);
+            } else {
+                showError("Unable to track shipment. Please try again later or check the tracking number.");
+                resultDiv.classList.add("hidden");
+            }
+        });
 }
 
 function displayShipment(shipment) {
