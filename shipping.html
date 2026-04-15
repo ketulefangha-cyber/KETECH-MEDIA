@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Tracking | KETECH MEDIA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<div class="whatsapp-float">
+    <a href="https://wa.me/237679673906" target="_blank">
+        💬
+    </a>
+</div>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">KETECH MEDIA</div>
+    <nav id="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1 class="fade-in">China Shipping & Logistics Tracking</h1>
+    <p class="fade-in-delay">Fast, Reliable, and Transparent Shipping Solutions</p>
+</section>
+
+<!-- SHIPPING TRACKING SECTION -->
+<section class="shipping-section">
+    <div class="shipping-container">
+        <h2>Track Your Shipment</h2>
+        <p class="section-subtitle">Enter your tracking number to monitor your goods from China</p>
+        
+        <div class="tracking-form">
+            <input 
+                type="text" 
+                id="trackingInput" 
+                placeholder="Enter Tracking Number (e.g., KETECH-CN-12345)" 
+                class="tracking-input"
+            >
+            <button onclick="trackShipment()" class="btn tracking-btn">Track Now</button>
+        </div>
+
+        <!-- Tracking Result -->
+        <div id="trackingResult" class="tracking-result hidden">
+            <div class="result-card">
+                <h3 id="shipmentStatus">Loading...</h3>
+                <div class="tracking-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Tracking ID:</span>
+                        <span class="detail-value" id="resultTrackingID"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Current Status:</span>
+                        <span class="detail-value" id="resultStatus"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Location:</span>
+                        <span class="detail-value" id="resultLocation"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Estimated Delivery:</span>
+                        <span class="detail-value" id="resultDelivery"></span>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline">
+                    <h4>Shipment Timeline</h4>
+                    <div id="timelineEvents" class="timeline-events">
+                        <!-- Timeline will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message hidden"></div>
+    </div>
+</section>
+
+<!-- SHIPPING SERVICES -->
+<section class="shipping-services">
+    <h2>Our Shipping Services</h2>
+    
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-icon">✈️</div>
+            <h3>Air Freight</h3>
+            <p>Fast international shipping via air. Perfect for urgent orders. Delivery in 5-10 business days.</p>
+            <p class="service-price">From $150</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🚢</div>
+            <h3>Sea Freight</h3>
+            <p>Cost-effective shipping for bulk orders. Eco-friendly and budget-friendly. Delivery in 20-30 days.</p>
+            <p class="service-price">From $50</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🚚</div>
+            <h3>Express Delivery</h3>
+            <p>Premium 24/7 tracking with express handling. Real-time updates and dedicated support.</p>
+            <p class="service-price">From $200</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📦</div>
+            <h3>Customs Clearance</h3>
+            <p>We handle all documentation and customs procedures. Hassle-free import process.</p>
+            <p class="service-price">From $75</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-choose">
+    <h2>Why Choose Our Shipping Services?</h2>
+    
+    <div class="features-grid">
+        <div class="feature">
+            <h4>📍 Real-Time Tracking</h4>
+            <p>Track your shipment 24/7 with live GPS updates and instant notifications</p>
+        </div>
+        <div class="feature">
+            <h4>🛡️ Insured Shipments</h4>
+            <p>All packages are insured against loss or damage during transit</p>
+        </div>
+        <div class="feature">
+            <h4>💰 Competitive Rates</h4>
+            <p>Get the best shipping rates with volume discounts available</p>
+        </div>
+        <div class="feature">
+            <h4>🌍 Global Network</h4>
+            <p>Shipping to over 200 countries with local expertise</p>
+        </div>
+        <div class="feature">
+            <h4>⚡ Fast Processing</h4>
+            <p>Quick customs clearance and rapid delivery times</p>
+        </div>
+        <div class="feature">
+            <h4>📞 Expert Support</h4>
+            <p>Dedicated customer support team available round the clock</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="shipping-cta">
+    <h2>Ready to Ship Your Goods from China?</h2>
+    <p>Get a free quote and start shipping with us today</p>
+    <a href="contact.html" class="btn">Request a Quote</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2024 KETECH MEDIA. All rights reserved. | Shipping & Logistics Solutions</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
