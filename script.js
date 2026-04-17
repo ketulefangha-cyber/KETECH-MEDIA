@@ -3,6 +3,72 @@ function toggleMenu() {
     nav.style.display = nav.style.display === "flex" ? "none" : "flex";
 }
 
+// ===== CONTACT FORM FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactFormSubmit);
+    }
+});
+
+function handleContactFormSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+    
+    // Collect form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value
+    };
+
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+
+    // Send data to PHP handler
+    fetch('api/contact.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+
+        if (data.success) {
+            formStatus.className = 'form-status success';
+            formStatus.textContent = data.message;
+            form.reset();
+            
+            // Clear status message after 5 seconds
+            setTimeout(() => {
+                formStatus.textContent = '';
+            }, 5000);
+        } else {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = data.message || 'Error sending message. Please try again.';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Error sending message. Please check your connection and try again.';
+    });
+}
+
 // ===== SHIPPING & TRACKING FUNCTIONALITY =====
 
 // Mock database of shipments
