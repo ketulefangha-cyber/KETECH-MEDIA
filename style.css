@@ -1127,6 +1127,215 @@ footer {
     transform: scale(1.05);
 }
 
+/* ===== CONTACT PAGE STYLES ===== */
+
+/* Contact Intro Section */
+.contact-intro {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.contact-intro h2 {
+    font-size: 36px;
+    color: #222;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.contact-intro p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Contact Cards Section */
+.contact-cards-section {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-card:hover {
+    border-color: #ff6600;
+    box-shadow: 0 10px 30px rgba(255, 102, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.contact-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.contact-card h3 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.contact-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.contact-link {
+    display: inline-block;
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 2px solid #ff6600;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.contact-link:hover {
+    background: #ff6600;
+    color: white;
+}
+
+.contact-link.whatsapp-link {
+    border-color: #25D366;
+    color: #25D366;
+}
+
+.contact-link.whatsapp-link:hover {
+    background: #25D366;
+    color: white;
+}
+
+.phone-list, .location-list {
+    text-align: center;
+}
+
+.phone-number {
+    color: #333;
+    font-size: 15px;
+    padding: 8px 0;
+    margin: 5px 0;
+}
+
+.location-list p {
+    color: #666;
+    font-size: 14px;
+    padding: 10px 0;
+    line-height: 1.5;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    padding: 12px 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: #ff6600;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.1);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-submit-btn {
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.contact-submit-btn:hover {
+    background: linear-gradient(135deg, #e55a00 0%, #ff6600 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3);
+}
+
+.contact-submit-btn:active {
+    transform: translateY(0);
+}
+
 /* Responsive Design for Services */
 @media (max-width: 768px) {
     .services-intro h2 {
@@ -1174,5 +1383,22 @@ footer {
 
     .service-cta p {
         font-size: 16px;
+    }
+
+    /* Contact Page Responsive */
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contact-form-section {
+        padding: 40px 20px;
+    }
+
+    .form-container {
+        padding: 30px 20px;
     }
 }
