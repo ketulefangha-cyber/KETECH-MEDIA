@@ -31,6 +31,18 @@ define('CAINIAO_APP_KEY', 'YOUR_CAINIAO_APP_KEY_HERE');
 define('CAINIAO_SECRET_KEY', 'YOUR_CAINIAO_SECRET_KEY_HERE');
 define('CAINIAO_API_URL', 'https://global.cainiao.com/smartlogitics/track/query');
 
+// Email Configuration
+define('SENDER_EMAIL', 'ketechmedia@hotmail.com');
+define('SENDER_NAME', 'KETECH MEDIA');
+define('RECEIVE_EMAIL', 'ketechmedia@hotmail.com'); // Where contact form emails go
+define('SMTP_ENABLED', false); // Set to true if you want to use SMTP instead of mail()
+
+// SMTP Configuration (optional - only needed if SMTP_ENABLED is true)
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_PORT', 587);
+define('SMTP_USERNAME', 'your-email@gmail.com');
+define('SMTP_PASSWORD', 'your-app-password');
+
 // Global Configuration
 define('ENABLE_MOCK_DATA', true); // Set to false once you add real API keys
 define('LOG_TRACKING_REQUESTS', true);
