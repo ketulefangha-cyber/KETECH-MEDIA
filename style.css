@@ -1455,7 +1455,11 @@ footer {
 /* About Intro Section */
 .about-intro {
     padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/kay_ketch.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
 }
 
 .about-intro-content {
@@ -1466,16 +1470,18 @@ footer {
 
 .about-intro-content h2 {
     font-size: 32px;
-    color: #222;
+    color: #ffffff;
     margin-bottom: 25px;
     font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .about-intro-content p {
     font-size: 16px;
-    color: #666;
+    color: #ffffff;
     line-height: 1.8;
     margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* About Cards Section - Mission, Vision, Values */
