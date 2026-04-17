@@ -86,18 +86,18 @@
     <div class="form-container">
         <h2>Send us a Message</h2>
         <p>Fill out the form below and we'll get back to you as soon as possible</p>
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm">
             <div class="form-group">
-                <input type="text" placeholder="Your Name" required>
+                <input type="text" id="name" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Your Email" required>
+                <input type="email" id="email" placeholder="Your Email" required>
             </div>
             <div class="form-group">
-                <input type="tel" placeholder="Phone Number">
+                <input type="tel" id="phone" placeholder="Phone Number">
             </div>
             <div class="form-group">
-                <select required>
+                <select id="service" required>
                     <option value="">Select Service Interest</option>
                     <option value="web">Website Development</option>
                     <option value="mobile">Mobile App Development</option>
@@ -108,9 +108,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea placeholder="Your Message" rows="6" required></textarea>
+                <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
             </div>
-            <button type="submit" class="contact-submit-btn">Send Message</button>
+            <div id="formStatus" class="form-status"></div>
+            <button type="submit" class="contact-submit-btn" id="submitBtn">Send Message</button>
         </form>
     </div>
 </section>
