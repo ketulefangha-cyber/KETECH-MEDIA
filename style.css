@@ -1455,7 +1455,7 @@ footer {
 /* About Intro Section */
 .about-intro {
     padding: 60px 20px;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('kay_ketch.jpeg');
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/kay_ketch.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1678,5 +1678,51 @@ footer {
     background: linear-gradient(135deg, #e55a00 0%, #ff6600 100%);
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3);
+}
+
+/* Responsive Design for About Section Background Image */
+@media (max-width: 1024px) {
+    .about-intro {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-intro {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center;
+        min-height: 350px;
+        padding: 40px 20px;
+    }
+
+    .about-intro-content h2 {
+        font-size: 28px;
+    }
+
+    .about-intro-content p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-intro {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center;
+        min-height: 300px;
+        padding: 30px 15px;
+    }
+
+    .about-intro-content h2 {
+        font-size: 24px;
+    }
+
+    .about-intro-content p {
+        font-size: 14px;
+    }
 }
 }
