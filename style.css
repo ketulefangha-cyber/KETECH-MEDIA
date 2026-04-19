@@ -1455,7 +1455,7 @@ footer {
 /* About Intro Section */
 .about-intro {
     padding: 60px 20px;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/kay_ketch.jpeg');
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('kay_ketch.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
