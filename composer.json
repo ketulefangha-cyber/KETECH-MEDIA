@@ -1,0 +1,7 @@
+{
+  "name": "ketech/referrals",
+  "description": "KETECH MEDIA site dependencies",
+  "require": {
+    "phpmailer/phpmailer": "^6.8"
+  }
+}
