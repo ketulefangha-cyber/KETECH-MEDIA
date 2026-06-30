@@ -1,0 +1,86 @@
+<?php
+// Simple admin UI for referrals. Use URL param ?admin_key=YOUR_KEY
+@include_once __DIR__ . '/../config.php';
+$provided = isset($_GET['admin_key']) ? $_GET['admin_key'] : '';
+$authorized = defined('REFERRAL_ADMIN_KEY') && $provided === REFERRAL_ADMIN_KEY;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin - Referrals</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .admin-container{max-width:1100px;margin:30px auto;padding:20px}
+        table{width:100%;border-collapse:collapse}
+        th,td{padding:8px;border:1px solid #eee;text-align:left}
+        .small{font-size:13px;color:#666}
+        .btn{background:#ff6600;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none}
+    </style>
+</head>
+<body>
+<div class="admin-container">
+    <h1>Referrals Admin</h1>
+    <?php if (!$authorized): ?>
+        <p>Enter admin key to proceed.</p>
+        <form method="get">
+            <input type="password" name="admin_key" placeholder="Admin key" />
+            <button type="submit" class="btn">Open</button>
+        </form>
+    <?php else: ?>
+        <p class="small">You are authenticated. Use the controls to update status or delete referrals.</p>
+        <div id="status"></div>
+        <table id="refTable">
+            <thead>
+                <tr><th>ID</th><th>Referrer</th><th>Referee</th><th>Message</th><th>Created</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    <?php endif; ?>
+</div>
+<?php if ($authorized): ?>
+<script>
+const ADMIN_KEY = <?php echo json_encode($provided); ?>;
+async function load(){
+    const resp = await fetch('/api/referral_admin.php?admin_key=' + encodeURIComponent(ADMIN_KEY));
+    const json = await resp.json();
+    if(!json.success){ document.getElementById('status').textContent = json.message; return; }
+    const tbody = document.querySelector('#refTable tbody'); tbody.innerHTML = '';
+    json.records.reverse().forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${r.id}</td>
+            <td>${r.referrer_name}<br/><span class='small'>${r.referrer_email}</span></td>
+            <td>${r.referee_name}<br/><span class='small'>${r.referee_email}</span></td>
+            <td>${r.message || ''}</td>
+            <td>${r.created_at}</td>
+            <td>${r.status}</td>
+            <td>
+                <select data-id='${r.id}' class='status-select'>
+                    <option value='pending' ${r.status==='pending'?'selected':''}>pending</option>
+                    <option value='approved' ${r.status==='approved'?'selected':''}>approved</option>
+                    <option value='rejected' ${r.status==='rejected'?'selected':''}>rejected</option>
+                </select>
+                <button data-id='${r.id}' class='del-btn btn' style='background:#c0392b;margin-left:8px'>Delete</button>
+            </td>`;
+        tbody.appendChild(tr);
+    });
+    document.querySelectorAll('.status-select').forEach(s => s.addEventListener('change', async (e)=>{
+        const id = e.target.dataset.id; const status = e.target.value;
+        await postAction('update', id, {status}); load();
+    }));
+    document.querySelectorAll('.del-btn').forEach(b => b.addEventListener('click', async (e)=>{
+        if(!confirm('Delete this referral?')) return; const id = e.target.dataset.id; await postAction('delete', id); load();
+    }));
+}
+async function postAction(action, id, extras={}){
+    const fd = new FormData(); fd.append('action', action); fd.append('id', id); fd.append('admin_key', ADMIN_KEY);
+    for(const k in extras) fd.append(k, extras[k]);
+    const res = await fetch('/api/referral_admin.php', { method:'POST', body: fd });
+    return res.json();
+}
+load();
+</script>
+<?php endif; ?>
+</body>
+</html>
