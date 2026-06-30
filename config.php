@@ -47,5 +47,10 @@ define('SMTP_PASSWORD', 'your-app-password');
 define('ENABLE_MOCK_DATA', true); // Set to false once you add real API keys
 define('LOG_TRACKING_REQUESTS', true);
 define('LOG_FILE', '/logs/tracking_log.txt');
+// Referral admin key - change to a strong secret before using admin pages
+define('REFERRAL_ADMIN_KEY', 'changeme');
+// reCAPTCHA keys (optional) - set these to enable reCAPTCHA protection
+define('RECAPTCHA_SITE_KEY', '');
+define('RECAPTCHA_SECRET', '');
 
 ?>
