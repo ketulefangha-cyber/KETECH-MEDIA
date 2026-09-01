@@ -44,28 +44,71 @@ nav {
 
 /* Hero Section */
 .hero {
+    position: relative;
+    overflow: hidden;
     text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    padding: 140px 20px;
+    background-image: url('images/WhatsApp Image 2026-09-01 at 15.04.46.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
+    isolation: isolate;
+    background-attachment: fixed;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.48), rgba(255, 102, 0, 0.18));
+    z-index: -1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: -1;
+}
+
+.hero h1,
+.hero p,
+.hero .btn {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
     font-size: 40px;
     margin-bottom: 15px;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 102, 0, 0.3);
+    letter-spacing: 0.5px;
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 20px;
+    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.9);
+    font-weight: 600;
 }
 
 .btn {
-    padding: 10px 25px;
-    background: #ff6600;
+    position: relative;
+    z-index: 1;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #ff6600, #ff8a1d);
     color: white;
     border-radius: 5px;
     text-decoration: none;
+    box-shadow: 0 10px 24px rgba(255, 102, 0, 0.42);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(255, 102, 0, 0.5);
 }
 
 /* Responsive Menu */
